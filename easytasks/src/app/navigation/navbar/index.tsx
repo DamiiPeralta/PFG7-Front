@@ -4,7 +4,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="bg-gradient-to-b from-blue-dark via-blue-medium to-blue-light min-h-screen p-8">
+    <div className="bg-transparent w-full h-30 sticky top-0 mt-4 z-20">
       <header className="flex justify-between items-center mb-8">
         <div className="logo">
           <Link href="/Landing">
@@ -13,19 +13,19 @@ const Navbar = () => {
         </div>
         <nav className="flex space-x-8">
           <a
-            href="/Comenzar"
+            href="#section-welcome"
             className="hover:text-gray-200 transition duration-300"
           >
             Comenzar
           </a>
           <a
-            href="/Nosotros"
+            href="#section-about"
             className="hover:text-gray-200 transition duration-300"
           >
             Nosotros
           </a>
           <a
-            href="/Donate"
+            href="#section-donations"
             className="hover:text-gray-200 transition duration-300"
           >
             Donaciones
