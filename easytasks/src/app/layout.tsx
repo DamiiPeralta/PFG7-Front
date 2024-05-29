@@ -7,7 +7,7 @@ const averia = Averia_Gruesa_Libre({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "EasyTasks",
-  description: "Proyecto final Henry-Gestor de tareas",
+  description: "Proyecto final Henry - Gestor de tareas",
 };
 
 export default function RootLayout({
