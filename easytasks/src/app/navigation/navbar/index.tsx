@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className="bg-gradient-to-b from-blue-dark via-blue-medium to-blue-light min-h-screen p-8">
       <header className="flex justify-between items-center mb-8">
         <div className="logo">
-          <Link href="/">
+          <Link href="/Landing">
             <img src="/logo.svg" alt="logo" className="w-26 h-14" />
           </Link>
         </div>
