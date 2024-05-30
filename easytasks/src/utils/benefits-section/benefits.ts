@@ -1,8 +1,8 @@
 const benefits = [
   {
     id: 1,
-    title: "Mantén tus tareas ordenadas por prioridad en un solo lugar",
-    image: "/benefits-section/prioridad.svg",
+    title: "Mantén tus tareas ordenadas por prioridad en un solo lugar.",
+    image: "/benefits-section/gatocontareas.svg",
     alt: "gatos ordenando tareas en una pantalla",
   },
   {
@@ -22,15 +22,15 @@ const benefits = [
     id: 4,
     title:
       "Por cada objetivo logrado recibe tu recompensa y aumenta tu motivación.",
-    image: "/benefits-section/recompensa.svg",
-    alt: "medallas y trofeos",
+    image: "/benefits-section/gatoGanador.svg",
+    alt: "Gato con un trofeo",
   },
   {
     id: 5,
     title:
-      "Sé parte de esta hermosa comunidad y colabora para las próximas mejoras",
-    image: "/benefits-section/comunidad.svg",
-    alt: "gatos donando dinero",
+      "Sé parte de esta hermosa comunidad y colabora para las próximas mejoras.",
+    image: "/benefits-section/gatoDonador.svg",
+    alt: "gato donando dinero",
   },
 ];
 export default benefits;
