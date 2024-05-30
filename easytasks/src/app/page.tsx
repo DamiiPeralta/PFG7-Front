@@ -1,13 +1,12 @@
-import BenefitsSection from "@/components/benefits-section/benefits-section";
-
 import Bienvenida from "@/components/Bienvenida";
+import BenefitsSection from "@/components/benefits-section/benefits-section";
 
 const LandingPage = () => {
   return (
-    <div>
-      <Bienvenida />;
-      <BenefitsSection />;
-    </div>
+    <>
+      <Bienvenida />
+      <BenefitsSection />
+    </>
   );
 };
 export default LandingPage;

@@ -3,7 +3,7 @@ import React from "react";
 
 const Bienvenida = () => {
   return (
-    <div className="bg-gradient-lineal min-h-screen top-0 absolute w-full">
+    <div className="bg-gradient-lineal min-h-screen top-0 w-full">
       <section className="flex flex-col items-center text-center md:mt-46 mt-16">
         <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto px-8">
           <div className="text-left md:w-1/2">

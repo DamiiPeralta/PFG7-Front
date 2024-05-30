@@ -7,7 +7,8 @@ const benefits = [
   },
   {
     id: 2,
-    title: "Forma equipos y alcanza objetivos en grupo.",
+    title:
+      "Forma equipos de trabajo colaborativos y enfocados, para que juntos puedan alcanzar los objetivos establecidos.",
     image: "/benefits-section/gatosEnMeet.svg",
     alt: "gatos en una reunión virtual",
   },
@@ -15,7 +16,7 @@ const benefits = [
     id: 3,
     title:
       "Activa el modo Bienestar para mantenerte enfocado y evitar sobrecargas",
-    image: "/benefits-section/modobienestar.svg",
+    image: "/benefits-section/gatobienestar.svg",
     alt: "gato contento, con manos levantadas",
   },
   {
