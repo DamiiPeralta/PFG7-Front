@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
-const Bienvenida = () => {
+const Bienvenida: React.FC = () => {
   return (
     <div>
       <section className="flex flex-col items-center text-center -mt-18 md:mt-46">
@@ -11,7 +11,7 @@ const Bienvenida = () => {
               ¡Descubre la forma mas colaborativa de gestionar tus tareas!
             </h1>
             <p className="text-lg mb-4 text-white">
-              Transforma tu manera de trabajar proirizando tu bienestar y
+              Transforma tu manera de trabajar priorizando tu bienestar y
               mejorando la eficiencia.
             </p>
           </div>
