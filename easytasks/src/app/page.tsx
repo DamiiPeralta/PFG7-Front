@@ -1,10 +1,6 @@
-import AboutUs from "../components/aboutUs";
-import MentalHealth from "../components/mentalHealth";
+import Bienvenida from "@/components/Bienvenida";
 
-export default function Home() {
-  return (
-    <>
-
-    </>
-  );
-}
+const LandingPage = () => {
+  return <Bienvenida />;
+};
+export default LandingPage;

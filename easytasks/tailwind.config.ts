@@ -18,11 +18,11 @@ const config: Config = {
         "blue-dark": "#1e3a8a",
         "blue-medium": "#60a5fa",
         "blue-light": "#3b82f6",
+        "color-button": "#329FA6",
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-lineal":
+          "linear-gradient(to bottom, #29338D 0%, #414BA3 24%, #6249AB 49%, #5F98DF 100%)",
       },
     },
   },
