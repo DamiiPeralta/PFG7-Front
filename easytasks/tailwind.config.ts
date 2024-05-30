@@ -12,9 +12,10 @@ const config: Config = {
         "blue-dark": "#1e3a8a",
         "blue-medium": "#60a5fa",
         "blue-light": "#3b82f6",
+        "color-button": "#329FA6",
       },
       backgroundImage: {
-        "custom-gradient":
+        "gradient-lineal":
           "linear-gradient(to bottom, #29338D 0%, #414BA3 24%, #6249AB 49%, #5F98DF 100%)",
       },
     },

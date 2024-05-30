@@ -1,10 +1,13 @@
-// "use client";
-// import { useRouter } from "next/navigation";
-
 import BenefitsSection from "@/components/benefits-section/benefits-section";
 
-export default function Home() {
-  // const router = useRouter();
-  // return router.push("/landing");
-  return <BenefitsSection />;
-}
+import Bienvenida from "@/components/Bienvenida";
+
+const LandingPage = () => {
+  return (
+    <div>
+      <Bienvenida />;
+      <BenefitsSection />;
+    </div>
+  );
+};
+export default LandingPage;
