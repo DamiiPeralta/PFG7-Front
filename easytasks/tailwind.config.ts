@@ -15,6 +15,9 @@ const config: Config = {
         "color4": "#6C5DBC",
         "color5": "#4A48A4",
         "color6": "#29338D",
+        "blue-dark": "#1e3a8a",
+        "blue-medium": "#60a5fa",
+        "blue-light": "#3b82f6",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -23,6 +26,7 @@ const config: Config = {
       },
     },
   },
+  variants: {},
   plugins: [],
 };
 export default config;
