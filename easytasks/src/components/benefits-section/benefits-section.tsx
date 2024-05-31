@@ -4,8 +4,8 @@ import Image from "next/image";
 const BenefitsSection = () => {
   return (
     <div id="section-benefits" className="bg-gradient-benefits min-h-screen">
-      <div className="flex flex-col items-center w-full px-4 md:px-0 ">
-        <div className="w-full md:w-3/4 lg:w-1/2 text-xl md:text-2xl text-white text-center mt-8 space-y-4">
+      <div className="flex flex-col items-center w-full md:px-0 ">
+        <div className="w-full md:w-3/4 lg:w-1/2 text-xl md:text-2xl text-white text-center">
           <p>
             En EasyTasks, creemos que un equipo saludable es un equipo
             productivo.
