@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import AboutUs from "@/components/aboutUs";
 import BenefitsSection from "@/components/benefits-section/benefits-section";
 import MentalHealth from "@/components/mentalHealth";
@@ -10,6 +11,7 @@ const LandingPage = () => {
       <BenefitsSection />
       <MentalHealth />
       <AboutUs />
+      <Footer />
     </>
   );
 };

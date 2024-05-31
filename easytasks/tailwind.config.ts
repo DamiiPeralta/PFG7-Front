@@ -24,8 +24,6 @@ const config: Config = {
       },
       backgroundImage: {
         "gradient-lineal":
-          "linear-gradient(to bottom, #29338D 0%, #414BA3 24%, #6249AB 49%, #5F98DF 100%)",
-        "footer-gradient": "linear-gradient(90deg, #AF87EA, #414BA3)",
           "linear-gradient(to top, #29338D 0%, #414BA3 24%, #6249AB 49%, #5F98DF 100%)",
         "gradient-benefits":
           "linear-gradient(to bottom, #29338D 0%, #6249AB 50%, #329FA6 100%)",
