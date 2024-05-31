@@ -15,6 +15,8 @@ const config: Config = {
         "color4": "#6C5DBC",
         "color5": "#4A48A4",
         "color6": "#29338D",
+        "grey": "#CCCCCC",
+        "white": "#FFFFFF",
         "blue-dark": "#1e3a8a",
         "blue-medium": "#60a5fa",
         "blue-light": "#3b82f6",
