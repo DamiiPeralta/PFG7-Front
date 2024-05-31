@@ -4,7 +4,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="bg-transparent w-full h-30 sticky top-0 mt-4 z-20">
+    <div className=" w-full h-30 bg-color7 fixed top-0 p-4 z-20">
       <div className="flex justify-between items-center">
         <div className="logo">
           <Link href="/">
@@ -13,7 +13,7 @@ const Navbar = () => {
         </div>
         <nav className="flex space-x-8">
           <a
-            href="#section-welcome"
+            href="/register"
             className="hover:text-gray-200 transition duration-300"
           >
             Comenzar
