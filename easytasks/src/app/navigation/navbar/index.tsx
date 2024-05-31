@@ -4,8 +4,8 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="bg-transparent w-full h-30 sticky top-0 mt-4 z-20">
-      <header className="flex justify-between items-center mb-8">
+    <div className=" w-full h-30 bg-color7 fixed top-0 p-4 z-20">
+      <div className="flex justify-between items-center">
         <div className="logo">
           <Link href="/">
             <img src="/logo.svg" alt="logo" className="w-26 h-14" />
@@ -13,7 +13,7 @@ const Navbar = () => {
         </div>
         <nav className="flex space-x-8">
           <a
-            href="#section-welcome"
+            href="/register"
             className="hover:text-gray-200 transition duration-300"
           >
             Comenzar
@@ -34,7 +34,7 @@ const Navbar = () => {
         <button className="bg-white hover:bg-blue-light text-black font-bold py-2 px-4 rounded ml-4">
           INICIAR SESION
         </button>
-      </header>
+      </div>
     </div>
   );
 };
