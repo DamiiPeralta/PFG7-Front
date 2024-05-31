@@ -4,6 +4,7 @@ import Logo from "@/components/logo";
 import { formFields } from "@/utils/register/form";
 import { Errors, FormFields } from "@/utils/types/interfaces-form";
 import validate from "@/utils/validates/validate";
+import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import ReactPasswordChecklist from "react-password-checklist";
@@ -15,9 +16,10 @@ const Register = () => {
     email: "",
     password: "",
   });
-
   const [passwordAgain, setPasswordAgain] = useState<string>("");
   const [errors, setErrors] = useState<Errors>({});
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -26,6 +28,7 @@ const Register = () => {
     const newErrors = validate({ fieldName: name, fieldValue: value }, errors);
     setErrors(newErrors);
   };
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -51,6 +54,14 @@ const Register = () => {
     } else {
       alert("❗ Hay errores en el formulario.");
     }
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleShowRepeatPassword = () => {
+    setShowRepeatPassword(!showRepeatPassword);
   };
 
   return (
@@ -88,7 +99,39 @@ const Register = () => {
                 )}
               </div>
             ))}
-            <div className="flex flex-col mb-4">
+            <div className="flex flex-col mb-4 relative">
+              <label
+                htmlFor="password"
+                className="mb-2 font-bold text-gray-700"
+              >
+                Contraseña:
+              </label>
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                id="password"
+                value={form.password}
+                onChange={handleInputChange}
+                required
+                className="border border-gray-300 rounded-md p-2 w-full pr-10"
+              />
+              <Image
+                src={
+                  showPassword
+                    ? "/register/eyes-open.png"
+                    : "/register/eyes-closed.png"
+                }
+                width={30}
+                height={30}
+                alt="Toggle Password Visibility"
+                className="absolute right-3 top-10 cursor-pointer"
+                onClick={toggleShowPassword}
+              />
+              {errors.password && (
+                <p className="text-red-600 text-sm mt-1">{errors.password}</p>
+              )}
+            </div>
+            <div className="flex flex-col mb-4 relative">
               <label
                 htmlFor="repeatPassword"
                 className="mb-2 font-bold text-gray-700"
@@ -96,11 +139,23 @@ const Register = () => {
                 Repetir contraseña:
               </label>
               <input
-                type="password"
+                type={showRepeatPassword ? "text" : "password"}
                 name="repeatPassword"
                 id="repeatPassword"
                 onChange={(e) => setPasswordAgain(e.target.value)}
-                className="border border-gray-300 rounded-md p-2 w-full"
+                className="border border-gray-300 rounded-md p-2 w-full pr-10"
+              />
+              <Image
+                src={
+                  showRepeatPassword
+                    ? "/register/eyes-open.png"
+                    : "/register/eyes-closed.png"
+                }
+                width={30}
+                height={30}
+                alt="Toggle Repeat Password Visibility"
+                className="absolute right-3 top-10 cursor-pointer"
+                onClick={toggleShowRepeatPassword}
               />
             </div>
             <ReactPasswordChecklist
@@ -121,7 +176,9 @@ const Register = () => {
               className="w-full bg-color-button hover:bg-color-button-hover text-black text-xl font-bold py-3 px-6 rounded-lg mt-4 disabled:opacity-50"
               disabled={
                 Object.keys(errors).length > 0 ||
-                form.password !== passwordAgain
+                form.password !== passwordAgain ||
+                !form.password ||
+                !passwordAgain
               }
             >
               Registrarse
@@ -140,4 +197,5 @@ const Register = () => {
     </div>
   );
 };
+
 export default Register;
