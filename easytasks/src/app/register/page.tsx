@@ -1,5 +1,6 @@
 "use client";
 
+import Logo from "@/components/logo";
 import { formFields } from "@/utils/register/form";
 import { Errors, FormFields } from "@/utils/types/interfaces-form";
 import validate from "@/utils/validates/validate";
@@ -60,12 +61,9 @@ const Register = () => {
       >
         <div className="flex flex-col justify-center lg:flex-row gap-10">
           <div className="w-full lg:w-3/4 flex flex-col justify-center mt-6">
-            <div className="text-4xl font-bold mb-4 text-orange text-center">
-              Registrarse
-            </div>
-            <div className="text-lg text-gray-600 mb-6 font-bold text-center">
-              ÚNETE A NOSOTROS
-            </div>
+            <Logo />
+            <hr className="border-gray-300 w-1/2 mb-8 ml-[25%]" />
+
             {formFields.map((field) => (
               <div key={field.name} className="flex flex-col mb-4">
                 <label
