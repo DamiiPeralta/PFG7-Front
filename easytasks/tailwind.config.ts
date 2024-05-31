@@ -9,6 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        color1: "#329FA6",
+        color2: "#5CB0C8",
+        color3: "#AF87EA",
+        color4: "#6C5DBC",
+        color5: "#4A48A4",
+        color6: "#29338D",
+        color7: "#5F98DF",
+        color8: "#CD9AE4",
         "blue-dark": "#1e3a8a",
         "blue-medium": "#60a5fa",
         "blue-light": "#3b82f6",
@@ -18,6 +26,11 @@ const config: Config = {
         "gradient-lineal":
           "linear-gradient(to bottom, #29338D 0%, #414BA3 24%, #6249AB 49%, #5F98DF 100%)",
         "footer-gradient": "linear-gradient(90deg, #AF87EA, #414BA3)",
+          "linear-gradient(to top, #29338D 0%, #414BA3 24%, #6249AB 49%, #5F98DF 100%)",
+        "gradient-benefits":
+          "linear-gradient(to bottom, #29338D 0%, #6249AB 50%, #329FA6 100%)",
+        "gradient-hr":
+          "linear-gradient(to right, #29338D 0%, #6249AB 50%, #329FA6 100%",
       },
     },
   },
