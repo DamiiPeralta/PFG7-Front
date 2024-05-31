@@ -27,9 +27,8 @@ const config: Config = {
           "linear-gradient(to top, #29338D 0%, #414BA3 24%, #6249AB 49%, #5F98DF 100%)",
         "gradient-benefits":
           "linear-gradient(to bottom, #29338D 0%, #6249AB 50%, #329FA6 100%)",
-        "gradient-hr":
-          "linear-gradient(to right, #29338D 0%, #6249AB 50%, #329FA6 100%",
-        "footer-gradient": "linear-gradient(180deg, #AF87EA, #414BA3, #329FA6)",
+        "footer-gradient": "linear-gradient(180deg, #4A48A4, #634C84 100%)",
+        // "linear-gradient(to bottom, #4A48A4, #634C84 100%",
       },
     },
   },
