@@ -28,7 +28,6 @@ const config: Config = {
         "gradient-benefits":
           "linear-gradient(to bottom, #29338D 0%, #6249AB 50%, #329FA6 100%)",
         "footer-gradient": "linear-gradient(180deg, #4A48A4, #634C84 100%)",
-        // "linear-gradient(to bottom, #4A48A4, #634C84 100%",
       },
     },
   },
