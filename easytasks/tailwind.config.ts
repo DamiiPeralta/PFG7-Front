@@ -21,12 +21,15 @@ const config: Config = {
         "blue-medium": "#60a5fa",
         "blue-light": "#3b82f6",
         "color-button": "#329FA6",
+        "color-button-hover": "#955CB0",
       },
       backgroundImage: {
         "gradient-lineal":
           "linear-gradient(to top, #29338D 0%, #414BA3 24%, #6249AB 49%, #5F98DF 100%)",
         "gradient-benefits":
           "linear-gradient(to bottom, #29338D 0%, #6249AB 50%, #329FA6 100%)",
+        "gradient-register":
+          "linear-gradient(to bottom, #2F84A0 0%, #6048A4 50%, #353F98 100%)",
         "footer-gradient": "linear-gradient(180deg, #4A48A4, #634C84 100%)",
       },
     },
