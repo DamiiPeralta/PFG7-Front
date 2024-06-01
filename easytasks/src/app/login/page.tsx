@@ -35,48 +35,29 @@ const LoginPage = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      // simulacion mientras de una respuesta exitosa del servidor
-      const result = {
-        id: 1,
-        name: "Yesenia Gonzalez",
-        email: data.email,
-        token: "1234567890-jwt-token",
-      };
-      console.log("login successful:", result);
+      const response = await fetch("/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-      localStorage.setItem("user", JSON.stringify(result));
-      setUser(result);
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Login successful:", result);
+        localStorage.setItem("user", JSON.stringify(result));
 
-      //redirige al usuario en la pagina principal u otra
-      router.push("/home");
+        setUser(result);
+
+        router.push("/");
+      } else {
+        //aqui se maneja errores de autenticación
+        const error = await response.json();
+        setLoginError(error.message || "Incorrect Credentials");
+      }
     } catch (error) {
       setLoginError("Error connecting to the Server");
-      // nos acordamos que aqui va  al endpoint del backend para iniciar sesión
-      // const response = await fetch("/users/login", {
-      // method: "POST",
-      // headers: {
-      // "Content-Type": "application/json",
-      // },
-      // body: JSON.stringify(data),
-      // });
-
-      // if (response.ok) {
-      //nos  duponemos que el backend responde con el usuario autenticado
-      // const result = await response.json();
-      // console.log("Login successful:", result);
-      //aqui debe guardar los datos del usuario en localStorage
-      // localStorage.setItem("user", JSON.stringify(result));
-
-      //Redirigir al usuario a la página principal u otra página  que se vaya a poner
-
-      // router.push("/dashboard");
-      // } else {
-      //aqui se maneja errores de autenticación
-      // const error = await response.json();
-      // setLoginError(error.message || "Incorrect Credentials");
-      // }
-      // } catch (error) {
-      // setLoginError("Error connecting to the Server");
     }
   };
 
