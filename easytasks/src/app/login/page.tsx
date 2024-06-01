@@ -2,11 +2,13 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Image from "next/image";
+import { useAuth } from "@/contextLogin/AuthContext";
 
 const schema = yup.object().shape({
   email: yup
@@ -17,6 +19,7 @@ const schema = yup.object().shape({
 });
 
 const LoginPage = () => {
+  const { setUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -28,29 +31,52 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
 
+  const router = useRouter();
+
   const onSubmit = async (data: any) => {
     try {
-      // nos acordamos que aqui va  al endpoint del backend para iniciar sesión
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      // simulacion mientras de una respuesta exitosa del servidor
+      const result = {
+        id: 1,
+        name: "Yesenia Gonzalez",
+        email: data.email,
+        token: "1234567890-jwt-token",
+      };
+      console.log("login successful:", result);
 
-      if (response.ok) {
-        //nos  duponemos que el backend responde con el usuario autenticado
-        const result = await response.json();
-        console.log("Login successful:", result);
-        // Redirigir al usuario a la página principal u otra página  que nos plasca poner
-      } else {
-        // aqui se maneja errores de autenticación
-        const error = await response.json();
-        setLoginError(error.message || "Incorrect Credentials");
-      }
+      localStorage.setItem("user", JSON.stringify(result));
+      setUser(result);
+
+      //redirige al usuario en la pagina principal u otra
+      router.push("/home");
     } catch (error) {
       setLoginError("Error connecting to the Server");
+      // nos acordamos que aqui va  al endpoint del backend para iniciar sesión
+      // const response = await fetch("/users/login", {
+      // method: "POST",
+      // headers: {
+      // "Content-Type": "application/json",
+      // },
+      // body: JSON.stringify(data),
+      // });
+
+      // if (response.ok) {
+      //nos  duponemos que el backend responde con el usuario autenticado
+      // const result = await response.json();
+      // console.log("Login successful:", result);
+      //aqui debe guardar los datos del usuario en localStorage
+      // localStorage.setItem("user", JSON.stringify(result));
+
+      //Redirigir al usuario a la página principal u otra página  que se vaya a poner
+
+      // router.push("/dashboard");
+      // } else {
+      //aqui se maneja errores de autenticación
+      // const error = await response.json();
+      // setLoginError(error.message || "Incorrect Credentials");
+      // }
+      // } catch (error) {
+      // setLoginError("Error connecting to the Server");
     }
   };
 
