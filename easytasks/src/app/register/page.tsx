@@ -6,10 +6,14 @@ import { Errors, FormFields } from "@/utils/types/interfaces-form";
 import validate from "@/utils/validates/validate";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import ReactPasswordChecklist from "react-password-checklist";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 const Register = () => {
+  const router = useRouter();
   const [form, setForm] = useState<FormFields>({
     name: "",
     nickname: "",
@@ -29,7 +33,7 @@ const Register = () => {
     setErrors(newErrors);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     let valid = true;
@@ -47,10 +51,24 @@ const Register = () => {
     });
 
     setErrors(newErrors);
-    console.log("ERRORES......", newErrors);
 
     if (valid) {
-      alert("Registro exitoso ✅");
+      try {
+        fetch(`${API_URL}/users`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }).then((response) => {
+          return response.json();
+        });
+
+        alert("Registro exitoso ✅");
+      } catch (error) {
+        console.error("Error en el registro:", error);
+        alert("Error en el registro. Por favor, intenta nuevamente.");
+      }
     } else {
       alert("❗ Hay errores en el formulario.");
     }
