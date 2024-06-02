@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Averia_Gruesa_Libre } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "./navigation";
+import { Provider } from "./Providers";
 
 const averia = Averia_Gruesa_Libre({ weight: "400", subsets: ["latin"] });
 
@@ -18,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={averia.className}>
-        <Navigation />
-        {children}
+        <Provider>
+          <Navigation />
+          {children}
+        </Provider>
       </body>
     </html>
   );
