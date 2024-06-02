@@ -5,6 +5,7 @@ import MentalHealth from "@/components/mentalHealth";
 import WelcomeSection from "@/components/welcome-section/Bienvenida";
 import NavbarApp from "./navigation/navbarApp";
 
+
 const LandingPage = () => {
   return (
     <>
