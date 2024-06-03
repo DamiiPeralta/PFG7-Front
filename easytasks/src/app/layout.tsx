@@ -24,12 +24,10 @@ export default function RootLayout({
           <Navigation />
           {children}
         </ClientWrapper>
-=======
         <Provider>
           <Navigation />
           {children}
         </Provider>
->>>>>>> develop
       </body>
     </html>
   );
