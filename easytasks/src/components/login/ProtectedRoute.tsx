@@ -1,5 +1,5 @@
 "use client";
-import { useAuth } from "../contextLogin/AuthContext";
+import { useAuth } from "../../contextLogin/AuthContext";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -14,7 +14,7 @@ const ProtectedRoute = ({ children }: any) => {
   }, [user, router]);
 
   if (!user) {
-    return null; // Puedes mostrar un spinner de carga o algo mientras redirige
+    return null;
   }
 
   return children;
