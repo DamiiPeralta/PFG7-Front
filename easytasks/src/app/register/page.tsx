@@ -71,19 +71,17 @@ const Register = () => {
 
         if (response.ok) {
           const result = await response.json();
-          console.log("Registration successful:", result);
 
           registerUser(form); //aqui almacena los datos del usuario en localstorage
-          alert("Registro exitoso ✅");
+
           // Optionally redirect to login page or perform other actions
           router.push("/login");
         } else {
           const error = await response.json();
-          console.error("Error en el registro:", error);
+
           alert("Error en el registro. Por favor, intenta nuevamente.");
         }
       } catch (error) {
-        console.error("Error en el registro:", error);
         alert("Error en el registro. Por favor, intenta nuevamente.");
       }
     } else {
