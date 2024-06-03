@@ -1,14 +1,3 @@
-// import Navbar from "./navbar";
-// import NavbarApp from "./navbarApp";
-
-// export const Navigation = () => {
-//   return (
-//     <>
-//       <Navbar />
-//       <NavbarApp />
-//     </>
-//   )
-// };
 "use client"
 import { usePathname } from 'next/navigation';
 import Navbar from './navbar';
@@ -29,4 +18,3 @@ export const Navigation = () => {
 };
 
 export default Navigation;
-
