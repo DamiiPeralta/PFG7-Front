@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -6,11 +6,11 @@ const Navbar = () => {
   return (
     <div className=" w-full h-30 bg-color7 fixed top-0 p-4 z-20">
       <div className="flex justify-between items-center">
-        <div className="logo">
-          <Link href="/">
+        <Link href="/" className="flex">
             <img src="/logo.svg" alt="logo" className="w-26 h-14" />
-          </Link>
-        </div>
+            <Image src="/EasyTasks.svg" alt="AppName" width={100} height={100}/>
+        </Link>
+       
         <nav className="flex space-x-8">
           <a
             href="/register"

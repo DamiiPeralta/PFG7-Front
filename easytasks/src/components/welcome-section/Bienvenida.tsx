@@ -1,8 +1,11 @@
+import Navbar from "@/app/navigation/navbar";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const WelcomeSection = () => {
   return (
+    <>
     <div className="mt-20 bg-gradient-lineal min-h-screen top-0 w-full">
       <section className="flex flex-col items-center text-center ">
         <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto px-8">
@@ -26,13 +29,15 @@ const WelcomeSection = () => {
             />
           </div>
         </div>
-        <div className="mb-20 mt-2">
+        <Link href="/register" className="mb-20 mt-2">
           <button className="bg-color-button hover:bg-color8  text-black font-bold py-2 px-8 rounded text-xl w-60">
             Registrarse
           </button>
-        </div>
+        </Link>
       </section>
     </div>
+    </>
+    
   );
 };
 
