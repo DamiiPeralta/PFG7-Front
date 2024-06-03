@@ -9,7 +9,6 @@ import NavbarApp from "./navigation/navbarApp";
 const LandingPage = () => {
   return (
     <>
-    <NavbarApp/>
       <WelcomeSection />
       <BenefitsSection />
       <MentalHealth />
