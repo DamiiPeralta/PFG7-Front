@@ -54,7 +54,7 @@ const LoginPage = () => {
 
         setUser(result);
 
-        router.push("/");
+        router.push("/home");
       } else {
         //aqui se maneja errores de autenticación
         const error = await response.json();
