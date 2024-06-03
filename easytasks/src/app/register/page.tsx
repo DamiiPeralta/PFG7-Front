@@ -27,7 +27,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -37,7 +37,8 @@ const Register = () => {
     setErrors(newErrors);
   };
 
-  //aqui una vez que el usuario se registra y es exitoso es donde llama a la funcion registeUser dentro del componente Register.
+  //aqui una vez que el usuario se registra y es exitoso es donde llama a
+  //  la funcion registeUser dentro del componente Register.
 
   const registerUser = (userData: FormFields) => {
     localStorage.setItem("user", JSON.stringify(userData));
@@ -73,7 +74,6 @@ const Register = () => {
           body: JSON.stringify(form),
         });
 
-<<<<<<< HEAD
         if (response.ok) {
           const result = await response.json();
 
@@ -86,12 +86,6 @@ const Register = () => {
 
           alert("Error en el registro. Por favor, intenta nuevamente.");
         }
-=======
-        alert("Registro exitoso ✅");
-        setTimeout(() => {
-          router.push("/login");
-        }, 3000);
->>>>>>> develop
       } catch (error) {
         alert("Error en el registro. Por favor, intenta nuevamente.");
       }
