@@ -35,18 +35,22 @@ const LoginPage = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      const response = await fetch("/auth/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      console.log("API URL: ", process.env.NEXT_PUBLIC_API_URL);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/signin`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (response.ok) {
         const result = await response.json();
         console.log("Login successful:", result);
-        localStorage.setItem("user", JSON.stringify(result));
+        localStorage.setItem("user", JSON.stringify(result.user));
 
         setUser(result);
 
