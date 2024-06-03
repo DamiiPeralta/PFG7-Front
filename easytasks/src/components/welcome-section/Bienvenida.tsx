@@ -8,7 +8,7 @@ const WelcomeSection = () => {
     <>
     <div className="mt-20 bg-gradient-lineal min-h-screen top-0 w-full">
       <section className="flex flex-col items-center text-center ">
-        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-6xl mx-auto px-8 mt-8">
           <div className="text-left md:w-1/2">
             <h1 className="text-4xl font-bold mb-4 text-white">
               ¡Descubre la forma mas colaborativa de gestionar tus tareas!

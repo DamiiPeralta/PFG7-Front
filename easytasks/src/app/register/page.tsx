@@ -86,7 +86,7 @@ const Register = () => {
     <div className="min-h-screen bg-gradient-register flex flex-col justify-center items-center lg:flex-row lg:items-start p-5 lg:p-20">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-2xl z-10 bg-white p-5 rounded-xl mt-10 shadow-lg"
+        className="w-full max-w-2xl z-10 bg-white p-5 rounded-xl shadow-lg"
       >
         <div className="flex flex-col justify-center lg:flex-row gap-10">
           <div className="w-full lg:w-3/4 flex flex-col justify-center mt-6">

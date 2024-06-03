@@ -62,7 +62,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#5F98DF] via-[#9679C6] to-[#4A48A4] mt-20">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#5F98DF] via-[#9679C6] to-[#4A48A4] ">
       <div className="w-full max-w-md p-6 space-y-4 bg-white rounded-lg shadow-md">
         <div className="text-center">
           <img src="/logo.svg" alt="EasyTasks Logo" className="mx-auto mb-2" />
