@@ -67,7 +67,7 @@ const Register = () => {
     if (valid) {
       if (valid) {
         try {
-          fetch(`${API_URL}/users`, {
+          fetch(`${API_URL}/auth/signup`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const Register = () => {
           alert("Registro exitoso ✅");
           setTimeout(() => {
             router.push("/login");
-          }, 3000);
+          }, 1000);
         } catch (error) {
           console.error("Error en el registro:", error);
           alert("Error en el registro. Por favor, intenta nuevamente.");
