@@ -31,9 +31,11 @@ const Navbar = () => {
             Donaciones
           </a>
         </nav>
-        <button className="bg-white hover:bg-blue-light text-black font-bold py-2 px-4 rounded ml-4">
-          INICIAR SESION
-        </button>
+        <Link href="/login">
+          <button className="bg-white hover:bg-blue-light text-black font-bold py-2 px-4 rounded ml-4">
+            INICIAR SESION
+          </button>
+        </Link>
       </div>
     </div>
   );

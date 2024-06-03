@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Logo from "../../../components/logo/index"
 
 const NavbarApp = () => {
   const handleSelectChange = (event: { target: { value: any; }; }) => {
@@ -16,8 +15,7 @@ const NavbarApp = () => {
       <div className="flex flex-row justify-between items-center">
           <Link href="/home" className="flex">
             <img src="/logo.svg" alt="logo" className="w-26 h-14" />
-            {/* <Image src="/EasyTasks.svg" alt="AppName" width={100} height={100}/> */}
-            <Logo />
+            <Image src="/EasyTasks.svg" alt="AppName" width={100} height={100}/>
           </Link>
         <nav className="flex space-x-8">
           <a href="/home" className="hover:text-gray-200 transition duration-300">Inicio</a>

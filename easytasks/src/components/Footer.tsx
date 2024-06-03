@@ -10,18 +10,25 @@ const Footer = () => {
           <h2 className="text-lg font-bold mb-4">Web</h2>
           <ul className="space-y-2">
             <li>
-              <Link href="/Nosotros">Nosotros</Link>
+              <Link href="#section-about">Nosotros</Link>
             </li>
             <li>
-              <Link href="/Comenzar">Comenzar</Link>
+              <Link href="/register">Comenzar</Link>
             </li>
             <li>
-              <Link href="/Donate">Donaciones</Link>
+              <Link href="/">Donaciones</Link>
             </li>
           </ul>
         </div>
         <div className="flex flex-col items-center">
-          <img src="/logo.svg" alt="EasyTasks Logo" className="mx-auto mb-2" />
+          <Link href="/">
+            <img
+              src="/logo.svg"
+              alt="EasyTasks Logo"
+              className="mx-auto mb-2"
+            />
+          </Link>
+
           <h2 className="text-lg font-bold mb-4">EasyTasks</h2>
           <div className="flex  space-x-4">
             <Link href="https://facebook.com">
@@ -30,10 +37,10 @@ const Footer = () => {
             <Link href="https://instagram.com">
               <FaInstagram size={24} />
             </Link>
-            <Link href="https://linkedin">
+            <Link href="https://linkedin.com">
               <FaLinkedin size={24} />
             </Link>
-            <Link href="https://youtube">
+            <Link href="https://youtube.com">
               <FaYoutube size={24} />
             </Link>
           </div>

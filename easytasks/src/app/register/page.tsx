@@ -37,6 +37,13 @@ const Register = () => {
     setErrors(newErrors);
   };
 
+  //aqui una vez que el usuario se registra y es exitoso es donde llama a la funcion registeUser dentro del componente Register.
+
+  const registerUser = (userData: FormFields) => {
+    localStorage.setItem("user", JSON.stringify(userData));
+    alert("usuario registrado exitosamente");
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -58,22 +65,34 @@ const Register = () => {
 
     if (valid) {
       try {
-        fetch(`${API_URL}/users`, {
+        const response = await fetch(`${API_URL}/auth/signup`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(form),
-        }).then((response) => {
-          return response.json();
         });
 
+<<<<<<< HEAD
+        if (response.ok) {
+          const result = await response.json();
+
+          registerUser(form); //aqui almacena los datos del usuario en localstorage
+
+          // Optionally redirect to login page or perform other actions
+          router.push("/login");
+        } else {
+          const error = await response.json();
+
+          alert("Error en el registro. Por favor, intenta nuevamente.");
+        }
+=======
         alert("Registro exitoso ✅");
         setTimeout(() => {
           router.push("/login");
         }, 3000);
+>>>>>>> develop
       } catch (error) {
-        console.error("Error en el registro:", error);
         alert("Error en el registro. Por favor, intenta nuevamente.");
       }
     } else {
