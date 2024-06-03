@@ -1,15 +1,25 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-const AuthContext = createContext<any>(null);
+interface AuthContextProps {
+  user: any;
+  setUser: (user: any) => void;
+  logout: () => void;
+}
+
+const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 export const AuthProvider = ({ children }: any) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      try {
+        const parsedUser = JSON.parse(storedUser);
+      } catch (error) {
+        console.error("Error parsing user localstorage", error);
+      }
     }
   }, []);
 
@@ -25,4 +35,10 @@ export const AuthProvider = ({ children }: any) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};
