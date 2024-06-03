@@ -73,25 +73,10 @@ const Register = () => {
           body: JSON.stringify(form),
         });
 
-<<<<<<< HEAD
-        if (response.ok) {
-          const result = await response.json();
-
-          registerUser(form); //aqui almacena los datos del usuario en localstorage
-
-          // Optionally redirect to login page or perform other actions
-          router.push("/login");
-        } else {
-          const error = await response.json();
-
-          alert("Error en el registro. Por favor, intenta nuevamente.");
-        }
-=======
         alert("Registro exitoso ✅");
         setTimeout(() => {
           router.push("/login");
         }, 3000);
->>>>>>> develop
       } catch (error) {
         alert("Error en el registro. Por favor, intenta nuevamente.");
       }

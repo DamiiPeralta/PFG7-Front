@@ -7,7 +7,7 @@ export const Navigation = () => {
   const pathname = usePathname();
 
   if (pathname === '/login' || pathname === '/register') {
-    return null; // No renderiza ninguna navbar
+    return null; 
   }
 
   return (
