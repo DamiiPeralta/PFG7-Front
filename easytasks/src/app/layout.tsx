@@ -21,13 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={averia.className}>
         <ClientWrapper>
-          <Navigation />
-          {children}
+          <Provider>
+            <Navigation />
+            {children}
+          </Provider>
         </ClientWrapper>
-        <Provider>
-          <Navigation />
-          {children}
-        </Provider>
       </body>
     </html>
   );
