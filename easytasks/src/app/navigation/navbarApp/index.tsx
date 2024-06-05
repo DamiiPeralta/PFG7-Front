@@ -23,7 +23,7 @@ const NavbarApp = () => {
     <div className=" w-full h-30 bg-color5 fixed top-0 p-4 z-20">
       <div className="flex flex-row justify-between items-center">
         <Link href="/home" className="flex">
-          <img src="/logo.svg" alt="logo" className="w-26 h-14" />
+          <Image src="/logo.svg" width={26} height={26} alt="logo" />
           <Image src="/EasyTasks.svg" alt="AppName" width={100} height={100} />
         </Link>
         <nav className="flex space-x-8">
@@ -39,8 +39,9 @@ const NavbarApp = () => {
           <select
             onChange={handleSelectChange}
             className="bg-color5 text-black hover:text-gray-200 transition duration-300"
+            defaultValue=""
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Equipos
             </option>
             <option value="#">Mis Equipos</option>
