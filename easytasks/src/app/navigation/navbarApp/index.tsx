@@ -37,7 +37,7 @@ const NavbarApp = () => {
             <option value="/mis-equipos">Mis Equipos</option>
             <option value="/unirse">Unirse</option>
             <option value="/crear-equipo">Crear</option>
-            <option value="#">Información</option>
+            <option value="/informacion">Información</option>
           </select>
         </nav>
         <button className="bg-white hover:bg-color5 text-black hover:text-white font-bold py-2 px-4 rounded ml-4">
