@@ -20,12 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={averia.className}>
-        <ClientWrapper>
-          <Provider>
+        <Provider>
+          <ClientWrapper>
             <Navigation />
             {children}
-          </Provider>
-        </ClientWrapper>
+          </ClientWrapper>
+        </Provider>
       </body>
     </html>
   );

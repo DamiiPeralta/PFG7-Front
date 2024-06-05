@@ -27,7 +27,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -36,14 +36,6 @@ const Register = () => {
     const newErrors = validate({ fieldName: name, fieldValue: value }, errors);
     setErrors(newErrors);
   };
-
-  //aqui una vez que el usuario se registra y es exitoso es donde llama a
-  //  la funcion registeUser dentro del componente Register.
-
-  const registerUser = (userData: FormFields) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-  };
-  registerUser(form);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
