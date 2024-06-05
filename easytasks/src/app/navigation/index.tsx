@@ -1,5 +1,20 @@
-import Navbar from "./navbar";
+"use client"
+import { usePathname } from 'next/navigation';
+import Navbar from './navbar';
+import NavbarApp from './navbarApp';
 
 export const Navigation = () => {
-  return <Navbar />;
+  const pathname = usePathname();
+
+  if (pathname === '/login' || pathname === '/register') {
+    return null; 
+  }
+
+  return (
+    <>
+      {pathname === '/' ? <Navbar /> : <NavbarApp />}
+    </>
+  );
 };
+
+export default Navigation;

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Averia_Gruesa_Libre } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "./navigation";
+import ClientWrapper from "./ClientWrapper";
+import { Provider } from "./Providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const averia = Averia_Gruesa_Libre({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "EasyTasks",
-  description: "Proyecto final Henry-Gestor de tareas",
+  description: "Proyecto final Henry - Gestor de tareas",
 };
 
 export default function RootLayout({
@@ -17,9 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Navigation />
-        {children}
+      <body className={averia.className}>
+        <Provider>
+          <ClientWrapper>
+            <Navigation />
+            {children}
+          </ClientWrapper>
+        </Provider>
       </body>
     </html>
   );
