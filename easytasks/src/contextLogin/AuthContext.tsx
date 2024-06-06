@@ -1,4 +1,5 @@
 "use client";
+
 import { useSession } from "next-auth/react";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
@@ -6,29 +7,37 @@ interface AuthContextProps {
   user: any;
   setUser: (user: any) => void;
   logout: () => void;
+  validateUserSession: () => boolean | null;
 }
 
-const AuthContext = createContext<any>(null);
+const AuthContext = createContext<AuthContextProps | null>(null);
 
 export const AuthProvider = ({ children }: any) => {
+  const { data: session } = useSession();
   const [user, setUser] = useState<any>(null);
 
-  //data user google
-  // const { data: session } = useSession();
-  // localStorage.setItem("userSession", JSON.stringify({ userData: session }));
+  useEffect(() => {
+    if (session) {
+      setUser(session.user);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("userSession", JSON.stringify(session));
+      }
+    }
+  }, [session]);
 
   const validateUserSession = () => {
-    const userSession = localStorage.getItem("userSession");
-    if (userSession) {
-      return true;
-    } else {
-      return null;
+    if (typeof window !== "undefined") {
+      const userSession = localStorage.getItem("userSession");
+      return userSession ? true : null;
     }
+    return null;
   };
 
   const logout = () => {
-    localStorage.removeItem("userSession");
-    setUser(null);
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("userSession");
+      setUser(null);
+    }
   };
 
   return (
