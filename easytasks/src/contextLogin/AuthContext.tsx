@@ -1,5 +1,7 @@
 "use client";
 
+import { JwtPayload } from "@/utils/types/interface-auth";
+import { jwtDecode } from "jwt-decode";
 import { useSession } from "next-auth/react";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
@@ -42,7 +44,7 @@ export const AuthProvider = ({ children }: any) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, setUser, logout, validateUserSession }}
+      value={{ user, setUser, logout, validateUserSession, userIdFromToken }}
     >
       {children}
     </AuthContext.Provider>
