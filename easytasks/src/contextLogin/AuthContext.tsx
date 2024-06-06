@@ -1,15 +1,34 @@
 "use client";
+import { JwtPayload } from "@/utils/types/interface-auth";
+import { jwtDecode } from "jwt-decode";
 import { useSession } from "next-auth/react";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext<any>(null);
 
 export const AuthProvider = ({ children }: any) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<any>(null);
 
-  //data user google
-  // const { data: session } = useSession();
-  // localStorage.setItem("userSession", JSON.stringify({ userData: session }));
+  const userIdFromToken = () => {
+    const userSession = localStorage.getItem("userSession");
+
+    if (!userSession) {
+      return null;
+    }
+
+    try {
+      const token = JSON.parse(userSession).token.token;
+      if (!token) {
+        return null;
+      }
+
+      const decodedToken = jwtDecode<JwtPayload>(token);
+      return decodedToken.id;
+    } catch (error) {
+      console.error("Failed to decode token", error);
+      return null;
+    }
+  };
 
   const validateUserSession = () => {
     const userSession = localStorage.getItem("userSession");
@@ -27,11 +46,17 @@ export const AuthProvider = ({ children }: any) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, setUser, logout, validateUserSession }}
+      value={{ user, setUser, logout, validateUserSession, userIdFromToken }}
     >
       {children}
     </AuthContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+};

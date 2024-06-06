@@ -5,8 +5,6 @@ import React from "react";
 import { useAuth } from "@/contextLogin/AuthContext";
 
 const NavbarApp = () => {
-  const { logout } = useAuth();
-
   const handleSelectChange = (event: { target: { value: any } }) => {
     const value = event.target.value;
     if (value) {
@@ -44,10 +42,10 @@ const NavbarApp = () => {
             <option value="" disabled>
               Equipos
             </option>
-            <option value="#">Mis Equipos</option>
-            <option value="#">Unirse</option>
-            <option value="#">Crear</option>
-            <option value="#">Información</option>
+            <option value="/mis-equipos">Mis Equipos</option>
+            <option value="/unirse">Unirse</option>
+            <option value="/crear-equipo">Crear</option>
+            <option value="/informacion">Información</option>
           </select>
         </nav>
         <button
@@ -62,3 +60,6 @@ const NavbarApp = () => {
 };
 
 export default NavbarApp;
+function logout() {
+  throw new Error("Function not implemented.");
+}
