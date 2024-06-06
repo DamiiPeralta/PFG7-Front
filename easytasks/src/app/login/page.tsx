@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Image from "next/image";
-import { useAuth } from "@/contextLogin/AuthContext";
 import Logo from "@/components/logo";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -49,11 +48,8 @@ const LoginPage = () => {
         return response.json();
       })
       .then((data) => {
-        const { token, user } = data;
-        localStorage.setItem(
-          "userSession",
-          JSON.stringify({ token: token, userData: user })
-        );
+        const { token } = data;
+        localStorage.setItem("userSession", JSON.stringify({ token: token }));
         alert("Ingresaste con éxito");
         setTimeout(() => {
           router.push("/home");
