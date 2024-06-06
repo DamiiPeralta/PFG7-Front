@@ -1,15 +1,10 @@
-"use client";
 import { useAuth } from "@/contextLogin/AuthContext";
+import { getUserById } from "@/helpers/users/get";
 import React, { useEffect, useState } from "react";
 
-const MyTeems = () => {
-  const { userIdFromToken } = useAuth();
-  const [userId, setUserId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const id = userIdFromToken();
-    setUserId(id);
-  }, [userIdFromToken]);
+const MyTeams = async ({ params }: { params: { id: string } }) => {
+  const user = await getUserById(params.id);
+  console.log("esto es user🚕🚕🚲.......>", user);
 
   return (
     <div className="">
@@ -60,4 +55,4 @@ const MyTeems = () => {
   );
 };
 
-export default MyTeems;
+export default MyTeams;
