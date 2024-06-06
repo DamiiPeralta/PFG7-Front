@@ -9,3 +9,7 @@ export interface FormFields {
 export interface Errors {
   [key: string]: string;
 }
+export interface Login {
+  email: string;
+  password: string;
+}
