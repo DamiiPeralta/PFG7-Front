@@ -9,6 +9,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Image from "next/image";
 import { useAuth } from "@/contextLogin/AuthContext";
+import Logo from "@/components/logo";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const schema = yup.object().shape({
   email: yup
@@ -19,7 +21,6 @@ const schema = yup.object().shape({
 });
 
 const LoginPage = () => {
-  const { setUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -34,43 +35,40 @@ const LoginPage = () => {
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
-    try {
-      console.log("API URL: ", process.env.NEXT_PUBLIC_API_URL);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/signin`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
+    fetch(`${API_URL}/auth/signin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Hubo un problema al iniciar sesión");
         }
-      );
-
-      if (response.ok) {
-        const result = await response.json();
-        console.log("Login successful:", result);
-        localStorage.setItem("user", JSON.stringify(result.user));
-
-        setUser(result);
-
-        router.push("/home");
-      } else {
-        //aqui se maneja errores de autenticación
-        const error = await response.json();
+        return response.json();
+      })
+      .then((data) => {
+        const { token, user } = data;
+        localStorage.setItem(
+          "userSession",
+          JSON.stringify({ token: token, userData: user })
+        );
+        alert("Ingresaste con éxito");
+        setTimeout(() => {
+          router.push("/home");
+        }, 1000);
+      })
+      .catch((error) => {
         setLoginError(error.message || "Incorrect Credentials");
-      }
-    } catch (error) {
-      setLoginError("Error connecting to the Server");
-    }
+      });
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#5F98DF] via-[#9679C6] to-[#4A48A4] mt-20">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#5F98DF] via-[#9679C6] to-[#4A48A4]">
       <div className="w-full max-w-md p-6 space-y-4 bg-white rounded-lg shadow-md">
         <div className="text-center">
-          <img src="/logo.svg" alt="EasyTasks Logo" className="mx-auto mb-2" />
-          <h2 className="text-3xl font-bold text-gray-900">EasyTasks</h2>
+          <Logo />
         </div>
         {loginError && (
           <p className="mt-2 text-sm text-red-600">{loginError}</p>

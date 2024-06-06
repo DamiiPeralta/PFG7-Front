@@ -36,13 +36,13 @@ const MentalHealth = () => {
             <h3 className="font-semibold my-1 text-3xl">ESTRÉS LABORAL</h3>
             <ul className="list-disc list-inside w-[95%] text-2xl">
               <li className="ml-4">
-                "El 76% de los empleados experimentan estrés relacionado con el
-                trabajo que afecta su salud física y mental." (Fuente: American
-                Institute of Stress)
+                &quot;El 76% de los empleados experimentan estrés relacionado
+                con el trabajo que afecta su salud física y mental.&quot;
+                (Fuente: American Institute of Stress)
               </li>
               <li className="ml-4">
-                "El estrés laboral contribuye a un 40% de los casos de
-                insomnio." (Fuente: National Sleep Foundation)
+                &quot;El estrés laboral contribuye a un 40% de los casos de
+                insomnio.&quot; (Fuente: National Sleep Foundation)
               </li>
             </ul>
           </div>
@@ -52,14 +52,14 @@ const MentalHealth = () => {
             </h3>
             <ul className="list-disc list-inside w-[95%] text-2xl">
               <li className="ml-4">
-                "El 60% de los empleados sienten que su carga de trabajo es
-                demasiado pesada, lo que afecta su rendimiento y bienestar."
-                (Fuente: Gallup)
+                &quot;El 60% de los empleados sienten que su carga de trabajo es
+                demasiado pesada, lo que afecta su rendimiento y
+                bienestar.&quot; (Fuente: Gallup)
               </li>
               <li className="ml-4">
-                "La sobrecarga laboral está asociada con un aumento del 50% en
-                el riesgo de depresión y ansiedad." (Fuente: Occupational Health
-                Psychology)
+                &quot;La sobrecarga laboral está asociada con un aumento del 50%
+                en el riesgo de depresión y ansiedad.&quot; (Fuente:
+                Occupational Health Psychology)
               </li>
             </ul>
           </div>
@@ -69,13 +69,14 @@ const MentalHealth = () => {
             </h3>
             <ul className="list-disc list-inside w-[95%] text-2xl">
               <li className="ml-4">
-                "Empresas que priorizan la salud mental de sus empleados
-                observan un aumento del 20% en la productividad." (Fuente: WHO)
+                &quot;Empresas que priorizan la salud mental de sus empleados
+                observan un aumento del 20% en la productividad.&quot; (Fuente:
+                WHO)
               </li>
               <li className="ml-4">
-                "Equipos con una gestión de tareas eficaz reportan un 30% menos
-                de ausentismo por motivos de salud mental." (Fuente: Harvard
-                Business Review)
+                &quot;Equipos con una gestión de tareas eficaz reportan un 30%
+                menos de ausentismo por motivos de salud mental.&quot; (Fuente:
+                Harvard Business Review)
               </li>
             </ul>
           </div>

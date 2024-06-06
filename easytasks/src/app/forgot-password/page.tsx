@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import Logo from "@/components/logo";
+import Image from "next/image";
 import React, { useState } from "react";
 
 const ForgotPassword = () => {
@@ -25,8 +27,7 @@ const ForgotPassword = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-blue-500 to-purple-500 p-5">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <img src="/logo.svg" alt="EasyTasks Logo" className="mx-auto mb-2" />
-        <h2 className="text-2xl font-bold text-white">EasyTasks</h2>
+        <Logo />
         <h2 className="text-2xl font-bold mb-6 text-center">Forgot Password</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
