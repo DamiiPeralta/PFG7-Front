@@ -60,3 +60,6 @@ const NavbarApp = () => {
 };
 
 export default NavbarApp;
+function logout() {
+  throw new Error("Function not implemented.");
+}
