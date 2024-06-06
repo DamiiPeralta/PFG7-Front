@@ -7,7 +7,7 @@ interface AuthContextProps {
   logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextProps | undefined>(undefined);
+const AuthContext = createContext<any>(null);
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<any>(null);
@@ -16,14 +16,10 @@ export const AuthProvider = ({ children }: any) => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       try {
-        setUser(JSON.parse(storedUser));
+        const pardedUser = JSON.parse(storedUser);
+        setUser(pardedUser);
       } catch (error) {
         console.error("Error parsing stored user data", error);
-      }
-      try {
-        const parsedUser = JSON.parse(storedUser);
-      } catch (error) {
-        console.error("Error parsing user localstorage", error);
       }
     }
   }, []);
