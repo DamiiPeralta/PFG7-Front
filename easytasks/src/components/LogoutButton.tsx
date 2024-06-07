@@ -1,20 +1,24 @@
 "use client";
-import { useAuth } from "../contextLogin/AuthContext";
-import { useRouter } from "next/router";
+import { useAuth } from "@/contextLogin/AuthContext";
 
 const LogoutButton = () => {
-  const { logout } = useAuth();
-  const router = useRouter();
+  const { handleSignOut } = useAuth() || { handleSignOut: () => {} };
 
-  const handleLogout = () => {
-    logout();
-    router.push("/login");
+  const handleLogout = async () => {
+    try {
+      await handleSignOut();
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
   };
-
-  return <button onClick={handleLogout}>Logout</button>;
+  return (
+    <button
+      onClick={handleLogout}
+      className="bg-white hover:bg-color5 text-black hover:text-white font-bold py-2 px-4 rounded ml-4"
+    >
+      CERRAR SESION
+    </button>
+  );
 };
 
 export default LogoutButton;
-
-//recordar que se debe crear un archivo en app/ejemplo dashboard/page.tsx
-//y desde este archivo que se crea se deberia colocar el boton de logout en la aplicacion o donde se vaya a implementar
