@@ -59,7 +59,7 @@ const Register = () => {
     if (valid) {
       if (valid) {
         try {
-          fetch(`http://localhost:3000/auth/signup`, {
+          fetch(`${API_URL}/auth/signup`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

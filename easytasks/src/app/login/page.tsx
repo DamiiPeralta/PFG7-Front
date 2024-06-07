@@ -8,7 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Image from "next/image";
 import Logo from "@/components/logo";
-import { signIn, SignInResponse } from "next-auth/react";
+import { signIn,} from "next-auth/react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -36,7 +36,7 @@ const LoginPage = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      const response = await fetch(`http://localhost:3000/auth/signin`, {
+      const response = await fetch(`${API_URL}/auth/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
