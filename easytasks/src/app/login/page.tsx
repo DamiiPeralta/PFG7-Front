@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
@@ -9,6 +8,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Image from "next/image";
 import Logo from "@/components/logo";
+import { signIn, SignInResponse } from "next-auth/react";
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const schema = yup.object().shape({
@@ -34,30 +35,29 @@ const LoginPage = () => {
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
-    fetch(`${API_URL}/auth/signin`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Hubo un problema al iniciar sesión");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const { token } = data;
-        localStorage.setItem("userSession", JSON.stringify({ token: token }));
-        alert("Ingresaste con éxito");
-        setTimeout(() => {
-          router.push("/home");
-        }, 1000);
-      })
-      .catch((error) => {
-        setLoginError(error.message || "Incorrect Credentials");
+    try {
+      const response = await fetch(`http://localhost:3000/auth/signin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
+
+      if (!response.ok) {
+        throw new Error("Hubo un problema al iniciar sesión");
+      }
+
+      const result = await response.json();
+      const { token } = result;
+      localStorage.setItem("userSession", JSON.stringify({ token: token }));
+      alert("Ingresaste con éxito");
+      setTimeout(() => {
+        router.push("/home");
+      }, 1000);
+    } catch (error: any) {
+      setLoginError(error.message || "Incorrect Credentials");
+    }
   };
 
   return (
@@ -152,6 +152,7 @@ const LoginPage = () => {
           </div>
           <div>
             <button
+              onClick={() => signIn("google", { callbackUrl: "/home" })}
               type="button"
               className="w-full flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
