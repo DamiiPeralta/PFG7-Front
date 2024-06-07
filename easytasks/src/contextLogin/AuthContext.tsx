@@ -1,13 +1,32 @@
 "use client";
+
 import { JwtPayload } from "@/utils/types/interface-auth";
 import { jwtDecode } from "jwt-decode";
 import { useSession } from "next-auth/react";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-const AuthContext = createContext<any>(null);
+interface AuthContextProps {
+  user: any;
+  setUser: (user: any) => void;
+  logout: () => void;
+  validateUserSession: () => boolean | null;
+  userIdFromToken: () => string | null;
+}
+
+const AuthContext = createContext<AuthContextProps | null>(null);
 
 export const AuthProvider = ({ children }: any) => {
+  const { data: session } = useSession();
   const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    if (session) {
+      setUser(session.user);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("userSession", JSON.stringify(session));
+      }
+    }
+  }, [session]);
 
   const userIdFromToken = () => {
     const userSession = localStorage.getItem("userSession");
@@ -21,7 +40,6 @@ export const AuthProvider = ({ children }: any) => {
       if (!token) {
         return null;
       }
-
       const decodedToken = jwtDecode<JwtPayload>(token);
       return decodedToken.id;
     } catch (error) {
@@ -29,19 +47,19 @@ export const AuthProvider = ({ children }: any) => {
       return null;
     }
   };
-
   const validateUserSession = () => {
-    const userSession = localStorage.getItem("userSession");
-    if (userSession) {
-      return true;
-    } else {
-      return null;
+    if (typeof window !== "undefined") {
+      const userSession = localStorage.getItem("userSession");
+      return userSession ? true : null;
     }
+    return null;
   };
 
   const logout = () => {
-    localStorage.removeItem("userSession");
-    setUser(null);
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("userSession");
+      setUser(null);
+    }
   };
 
   return (
