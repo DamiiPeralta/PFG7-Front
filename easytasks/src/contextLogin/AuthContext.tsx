@@ -1,8 +1,7 @@
 "use client";
 import { JwtPayload } from "@/utils/types/interface-auth";
 import { jwtDecode } from "jwt-decode";
-import { useSession } from "next-auth/react";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext<any>(null);
 
@@ -21,7 +20,6 @@ export const AuthProvider = ({ children }: any) => {
       if (!token) {
         return null;
       }
-
       const decodedToken = jwtDecode<JwtPayload>(token);
       return decodedToken.id;
     } catch (error) {
