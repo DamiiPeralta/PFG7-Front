@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useAuth } from "@/contextLogin/AuthContext";
+import LogoutButton from "@/components/LogoutButton";
 
 const NavbarApp = () => {
   const handleSelectChange = (event: { target: { value: any } }) => {
@@ -10,11 +10,6 @@ const NavbarApp = () => {
     if (value) {
       window.location.href = value;
     }
-  };
-
-  const handleLogout = () => {
-    logout();
-    window.location.href = "/";
   };
 
   return (
@@ -48,18 +43,10 @@ const NavbarApp = () => {
             <option value="/informacion">Información</option>
           </select>
         </nav>
-        <button
-          onClick={handleLogout}
-          className="bg-white hover:bg-color5 text-black hover:text-white font-bold py-2 px-4 rounded ml-4"
-        >
-          CERRAR SESION
-        </button>
+        <LogoutButton />
       </div>
     </div>
   );
 };
 
 export default NavbarApp;
-function logout() {
-  throw new Error("Function not implemented.");
-}
