@@ -1,24 +1,20 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { useAuth } from "@/contextLogin/AuthContext";
+import { getUserIdFromToken } from "@/utils/jwtUtils";
 
 const CrearEquipoPage = () => {
-  const { user } = useAuth() || {};
+  const { userIdFromToken } = useAuth() || {};
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    if (user?.id || user?.userId) {
-      setUserId(user.id || user.userId);
-    } else {
-      setUserId(null); // No user or userId available
-    }
-  }, [user]);
+    const id = getUserIdFromToken();
+    setUserId(id);
+  }, []);
 
   useEffect(() => {
-    console.log("User:", user); // esto es para probar recordar para luego borrar
     console.log("UserId:", userId);
-  }, [user, userId]);
+  }, [userId]);
 
   const [teamName, setTeamName] = useState("");
   const [description, setDescription] = useState("");
