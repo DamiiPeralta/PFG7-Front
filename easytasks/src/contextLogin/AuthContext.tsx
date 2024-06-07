@@ -10,6 +10,7 @@ interface AuthContextProps {
   setUser: (user: any) => void;
   logout: () => void;
   validateUserSession: () => boolean | null;
+  userIdFromToken: () => string | null;
 }
 
 const AuthContext = createContext<AuthContextProps | null>(null);
@@ -27,6 +28,25 @@ export const AuthProvider = ({ children }: any) => {
     }
   }, [session]);
 
+  const userIdFromToken = () => {
+    const userSession = localStorage.getItem("userSession");
+
+    if (!userSession) {
+      return null;
+    }
+
+    try {
+      const token = JSON.parse(userSession).token.token;
+      if (!token) {
+        return null;
+      }
+      const decodedToken = jwtDecode<JwtPayload>(token);
+      return decodedToken.id;
+    } catch (error) {
+      console.error("Failed to decode token", error);
+      return null;
+    }
+  };
   const validateUserSession = () => {
     if (typeof window !== "undefined") {
       const userSession = localStorage.getItem("userSession");
