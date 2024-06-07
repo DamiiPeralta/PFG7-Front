@@ -2,32 +2,60 @@
 
 import { JwtPayload } from "@/utils/types/interface-auth";
 import { jwtDecode } from "jwt-decode";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface AuthContextProps {
   user: any;
   setUser: (user: any) => void;
-  logout: () => void;
   validateUserSession: () => boolean | null;
   userIdFromToken: () => string | null;
+  handleSignOut: () => void;
 }
-
-const AuthContext = createContext<AuthContextProps | null>(null);
+const AuthContext = createContext<AuthContextProps>({
+  user: null,
+  setUser: () => {},
+  validateUserSession: () => null,
+  userIdFromToken: () => null,
+  handleSignOut: () => {},
+});
 
 export const AuthProvider = ({ children }: any) => {
-  const { data: session } = useSession();
   const [user, setUser] = useState<any>(null);
+  const { data: session, status } = useSession();
 
   useEffect(() => {
-    if (session) {
-      setUser(session.user);
-      if (typeof window !== "undefined") {
-        localStorage.setItem("userSession", JSON.stringify(session));
-      }
+    if (status === "authenticated" && session) {
+      localStorage.setItem("user", JSON.stringify(session.user));
     }
-  }, [session]);
+  }, [status, session]);
 
+  const handleSignOut = async () => {
+    await signOut({ redirect: false });
+    localStorage.removeItem("user");
+    localStorage.removeItem("userSession");
+    window.location.href = "/login";
+  };
+
+  const userIdFromToken = () => {
+    const userSession = localStorage.getItem("userSession");
+
+    if (!userSession) {
+      return null;
+    }
+
+    try {
+      const token = JSON.parse(userSession).token.token;
+      if (!token) {
+        return null;
+      }
+      const decodedToken = jwtDecode<JwtPayload>(token);
+      return decodedToken.id;
+    } catch (error) {
+      console.error("Failed to decode token", error);
+      return null;
+    }
+  };
   const validateUserSession = () => {
     if (typeof window !== "undefined") {
       const userSession = localStorage.getItem("userSession");
@@ -36,24 +64,15 @@ export const AuthProvider = ({ children }: any) => {
     return null;
   };
 
-  const logout = () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("userSession");
-      setUser(null);
-    }
-  };
-
-  const userIdFromToken = (): string | null => {
-    if (session?.accessToken) {
-      const decodedToken = jwtDecode<JwtPayload>(session.accessToken);
-      return decodedToken.sub || null;
-    }
-    return null;
-  };
-
   return (
     <AuthContext.Provider
-      value={{ user, setUser, logout, validateUserSession, userIdFromToken }}
+      value={{
+        user,
+        setUser,
+        validateUserSession,
+        userIdFromToken,
+        handleSignOut,
+      }}
     >
       {children}
     </AuthContext.Provider>

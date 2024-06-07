@@ -1,5 +1,8 @@
+"use client";
+import { useAuth } from "@/contextLogin/AuthContext";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
 const Home = () => {
   return (
@@ -8,7 +11,7 @@ const Home = () => {
         <h1 className="text-2xl font-bold my-10 py-4">¿Qué quieres hacer?</h1>
         <div className="flex flex-col sm:flex-row">
           <a
-            href="/mis-equipos"
+            href="/my-teams"
             className="flex flex-col items-center my-4 sm:mx-10 transition-transform duration-300 transform hover:scale-125"
           >
             <Image
