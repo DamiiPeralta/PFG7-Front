@@ -11,14 +11,11 @@ const CrearEquipoPage = () => {
     if (user?.id || user?.userId) {
       setUserId(user.id || user.userId);
     } else {
-      setUserId(null); // No user or userId available
+      setUserId(null);
     }
   }, [user]);
 
-  useEffect(() => {
-    console.log("User:", user); // esto es para probar recordar para luego borrar
-    console.log("UserId:", userId);
-  }, [user, userId]);
+  useEffect(() => {}, [user, userId]);
 
   const [teamName, setTeamName] = useState("");
   const [description, setDescription] = useState("");
