@@ -11,3 +11,10 @@ export interface Team {
   tasks: string[];
   deletedAt: Date;
 }
+
+export interface TeamCrate {
+  team_name: string;
+  description: string;
+  created_date: Date;
+  finish_date: Date;
+}
