@@ -16,7 +16,7 @@ const Home = () => {
     router.push(`/create-team/${id}`);
   };
   const handleJoinTeam = () => {
-    router.push(`/join-team/${id}`);
+    router.push(`/join-team`);
   };
 
   return (

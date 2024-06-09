@@ -18,3 +18,17 @@ export interface TeamCrate {
   created_date: Date;
   finish_date: Date;
 }
+export interface ModalProps {
+  isVisible: boolean;
+  onClose: () => void;
+  inviteCode: string;
+}
+export interface JoinTeam {
+  userid: string | null;
+  code: string;
+}
+export interface ModalTeam {
+  isVisible: boolean;
+  onClose: () => void;
+  team_name: string;
+}
