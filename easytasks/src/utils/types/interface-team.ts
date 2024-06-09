@@ -27,3 +27,8 @@ export interface JoinTeam {
   userid: string | null;
   code: string;
 }
+export interface ModalTeam {
+  isVisible: boolean;
+  onClose: () => void;
+  team_name: string;
+}

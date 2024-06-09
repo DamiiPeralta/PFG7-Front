@@ -1,5 +1,6 @@
 "use client";
 import Logo from "@/components/logo";
+import ModalJoinTeam from "@/components/modals/modalJoinTeam";
 import { useAuth } from "@/contextLogin/AuthContext";
 import { postJoinTeam } from "@/helpers/teams/post";
 import Image from "next/image";
@@ -9,6 +10,10 @@ const UneteAUnEquipoPage = () => {
   const [invitationCode, setInvitationCode] = useState("");
   const { userIdFromToken } = useAuth();
   const userId = userIdFromToken();
+  const [teamName, setTeamName] = useState("");
+  const [isModalVisible, setModalVisible] = useState(false);
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInvitationCode(e.target.value);
@@ -19,7 +24,14 @@ const UneteAUnEquipoPage = () => {
     try {
       const info = { userid: userId, code: invitationCode };
       const data = await postJoinTeam(info);
-      console.log("Respuesta del backend:", data);
+      if (data && data.team.team_id && data.team.team_name) {
+        alert("Te sumaste al equipo ✅");
+        setTeamName(data.team.team_name);
+        openModal();
+        setInvitationCode("");
+      } else {
+        alert("Hubo un error al unirse ❌");
+      }
     } catch (error) {
       console.error("Error al unirse al equipo:", error);
     }
@@ -55,6 +67,11 @@ const UneteAUnEquipoPage = () => {
               UNIRSE
             </button>
           </form>
+          <ModalJoinTeam
+            isVisible={isModalVisible}
+            onClose={closeModal}
+            team_name={teamName}
+          />
         </div>
       </div>
     </div>
