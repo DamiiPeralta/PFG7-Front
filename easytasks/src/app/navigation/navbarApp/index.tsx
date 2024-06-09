@@ -2,23 +2,39 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import LogoutButton from "@/components/LogoutButton";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/contextLogin/AuthContext";
 
 const NavbarApp = () => {
+  const router = useRouter();
+  const { userIdFromToken } = useAuth();
+  const id = userIdFromToken();
+
   const handleSelectChange = (event: { target: { value: any } }) => {
     const value = event.target.value;
-    if (value) {
-      window.location.href = value;
+
+    if (value === "myTeams") {
+      handleMyTeams();
+    } else if (value === "createTeam") {
+      handleCreateTeam();
+    } else if (value === "joinTeam") {
+      handleJoinTeam();
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    window.location.href = "/";
+  const handleMyTeams = () => {
+    router.push(`/my-teams/${id}`);
+  };
+  const handleCreateTeam = () => {
+    router.push(`/create-team/${id}`);
+  };
+  const handleJoinTeam = () => {
+    router.push(`/join-team`);
   };
 
   return (
-    <div className=" w-full h-30 bg-color5 fixed top-0 p-4 z-20">
+    <div className="w-full h-30 bg-color5 fixed top-0 p-4 z-20">
       <div className="flex flex-row justify-between items-center">
         <Link href="/home" className="flex">
           <Image src="/logo.svg" width={26} height={26} alt="logo" />
@@ -31,7 +47,7 @@ const NavbarApp = () => {
           >
             Inicio
           </a>
-          <a href="#" className="hover:text-gray-200 transition duration-300">
+          <a href="/" className="hover:text-gray-200 transition duration-300">
             Tablero
           </a>
           <select
@@ -40,26 +56,17 @@ const NavbarApp = () => {
             defaultValue=""
           >
             <option value="" disabled>
-              Equipos
+              Panel de Equipos
             </option>
-            <option value="/mis-equipos">Mis Equipos</option>
-            <option value="/unirse">Unirse</option>
-            <option value="/crear-equipo">Crear</option>
-            <option value="/informacion">Información</option>
+            <option value="myTeams">Mis Equipos</option>
+            <option value="createTeam">Crear un equipo</option>
+            <option value="joinTeam">Unirse a un equipo</option>
           </select>
         </nav>
-        <button
-          onClick={handleLogout}
-          className="bg-white hover:bg-color5 text-black hover:text-white font-bold py-2 px-4 rounded ml-4"
-        >
-          CERRAR SESION
-        </button>
+        <LogoutButton />
       </div>
     </div>
   );
 };
 
 export default NavbarApp;
-function logout() {
-  throw new Error("Function not implemented.");
-}
