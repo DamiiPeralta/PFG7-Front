@@ -6,6 +6,7 @@ import { postCreateTeam } from "@/helpers/teams/post";
 import Image from "next/image";
 import { getUserById } from "@/helpers/users/get";
 import { User } from "@/utils/types/interface-user";
+import ModalInviteCode from "@/components/join-team/modalInviteCode";
 
 const CreateTeam = ({ params }: { params: { id: string } }) => {
   const [userId, setUserId] = useState<string | null>(null);
@@ -16,6 +17,11 @@ const CreateTeam = ({ params }: { params: { id: string } }) => {
     created_date: new Date(),
     finish_date: new Date(),
   });
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [inviteCode, setInviteCode] = useState<string>("");
+  const [invitation, setInvitation] = useState<boolean>(false);
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
 
   useEffect(() => {
     setUserId(params.id);
@@ -57,7 +63,17 @@ const CreateTeam = ({ params }: { params: { id: string } }) => {
     try {
       const response = await postCreateTeam(params.id, teamData);
       if (response && response.team_name && response.team_id) {
-        alert("Equipo creado con éxito");
+        const invitationCode = response.invitation_code;
+        setInviteCode(invitationCode);
+        setInvitation(true);
+        setTeamData({
+          team_name: "",
+          description: "",
+          created_date: new Date(),
+          finish_date: new Date(),
+        });
+        alert("Equipo creado correctamente ✅");
+        setModalVisible(true);
       } else {
         alert("Error al crear el equipo");
       }
@@ -65,9 +81,16 @@ const CreateTeam = ({ params }: { params: { id: string } }) => {
       console.error("Error al crear el equipo:", error);
     }
   };
+  // const handleInvitation = () => {
+  //   if (invitation) {
+  //     setModalVisible(true);
+  //   } else {
+  //     alert("No se encuentra código de invitación valido");
+  //   }
+  // };
 
   return (
-    <div className="">
+    <div>
       <div className="bg-[#B4B3EA] py-10">
         <h2 className="text-2xl font-bold text-left text-black ml-6 mt-14">
           ¡Crea un equipo!
@@ -162,6 +185,14 @@ const CreateTeam = ({ params }: { params: { id: string } }) => {
               </button>
             </div>
           </form>
+          {/* <button onClick={() => handleInvitation()}>
+            Ver codigo de invitación
+          </button> */}
+          <ModalInviteCode
+            isVisible={isModalVisible}
+            onClose={closeModal}
+            inviteCode={inviteCode}
+          />
         </div>
       </div>
     </div>
