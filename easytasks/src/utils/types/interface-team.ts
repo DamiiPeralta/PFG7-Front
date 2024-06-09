@@ -23,3 +23,7 @@ export interface ModalProps {
   onClose: () => void;
   inviteCode: string;
 }
+export interface JoinTeam {
+  userid: string | null;
+  code: string;
+}

@@ -81,13 +81,6 @@ const CreateTeam = ({ params }: { params: { id: string } }) => {
       console.error("Error al crear el equipo:", error);
     }
   };
-  // const handleInvitation = () => {
-  //   if (invitation) {
-  //     setModalVisible(true);
-  //   } else {
-  //     alert("No se encuentra código de invitación valido");
-  //   }
-  // };
 
   return (
     <div>
@@ -185,9 +178,7 @@ const CreateTeam = ({ params }: { params: { id: string } }) => {
               </button>
             </div>
           </form>
-          {/* <button onClick={() => handleInvitation()}>
-            Ver codigo de invitación
-          </button> */}
+
           <ModalInviteCode
             isVisible={isModalVisible}
             onClose={closeModal}
