@@ -2,13 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-
 .bg-notebook-lines {
-    background-image: linear-gradient(to bottom, transparent 95%, #ccc 95%);
-    background-size: 100% 28px;
-    line-height: 24px;
+  background-image: linear-gradient(to bottom, transparent 95%, #ccc 95%);
+  background-size: 100% 28px;
+  line-height: 24px;
+}
+.newsletter-container {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+
+
+@keyframes colorChange {
+  0% {
+    color: black;
   }
-  
+  33% {
+    color: white;
+  }
+  66% {
+    color: rgb(15, 51, 170);
+  }
+  100% {
+    color: black;
+  }
+}
+
+.color-change {
+  animation: colorChange 4s infinite;
+}
