@@ -38,6 +38,10 @@ export const AuthProvider = ({ children }: any) => {
   };
 
   const userIdFromToken = () => {
+    if (typeof window === "undefined") {
+      return null;
+    }
+
     const userSession = localStorage.getItem("userSession");
 
     if (!userSession) {
